@@ -32,8 +32,7 @@
 			<Layer>
 				<FontString name="$parentCharName" inherits="GameFontNormalSmall" justifyH="LEFT">
 					<Size>
-						<!--<AbsDimension x="69" y="24" />-->
-						<RelDimension x="0.2" y="0.018" />
+						<AbsDimension x="310" y="24" />
 					</Size>
 					<Anchors>
 						<Anchor point="LEFT">
@@ -45,8 +44,7 @@
 				</FontString>
 				<FontString name="$parentGuildRank" inherits="GameFontNormalSmall" justifyH="LEFT">
 					<Size>
-						<!--<AbsDimension x="74" y="24" />-->
-						<RelDimension x="0.1" y="0.018" />
+						<AbsDimension x="120" y="24" />
 					</Size>
 					<Anchors>
 						<Anchor point="LEFT" relativeTo="$parentCharName" relativePoint="RIGHT" />
@@ -54,8 +52,7 @@
 				</FontString>
 				<FontString name="$parentDiceRoll" inherits="GameFontNormalSmall" justifyH="LEFT">
 					<Size>
-						<!--<AbsDimension x="110" y="24" />-->
-						<RelDimension x="0.1" y="0.018" />
+						<AbsDimension x="90" y="24" />
 					</Size>
 					<Anchors>
 						<Anchor point="LEFT" relativeTo="$parentGuildRank" relativePoint="RIGHT" />
@@ -63,8 +60,7 @@
 				</FontString>
 				<FontString name="$parentPriorityRoll" inherits="GameFontNormalSmall" justifyH="LEFT">
 					<Size>
-						<!--<AbsDimension x="110" y="24" />-->
-						<RelDimension x="0.1" y="0.018" />
+						<AbsDimension x="90" y="24" />
 					</Size>
 					<Anchors>
 						<Anchor point="LEFT" relativeTo="$parentDiceRoll" relativePoint="RIGHT" />
@@ -75,7 +71,7 @@
 	</Button>
 	<Frame name="Backbone_Frame" parent="UIParent" toplevel="true" movable="true">
 		<Size>
-			<RelDimension x="0.52" y="0.41" />
+			<AbsDimension x="640" y="480" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER">
@@ -94,8 +90,7 @@
 			</Button>
 			<Frame name="EntryFrame">
 				<Size>
-					<!--<AbsDimension x="800" y="96" />-->
-					<RelDimension x="0.52" y="0.41" />
+					<AbsDimension x="640" y="96" />
 				</Size>
 				<Anchors>
 					<Anchor point="TOP">
@@ -105,8 +100,7 @@
 				<Frames>
 					<Button name="$parentHeaderCharName" inherits="TDB_Header" id="1" text="Raider">
 						<Size>
-							<!--<AbsDimension x="89" y="24" />-->
-							<RelDimension x="0.2" y="0.02" />
+							<AbsDimension x="310" y="24" />
 						</Size>
 						<Anchors>
 							<Anchor point="TOPLEFT">
@@ -119,8 +113,7 @@
 					</Button>
 					<Button name="$parentHeaderGuildRank" inherits="TDB_Header" id="2" text="Guild Rank">
 						<Size>
-							<!-- <AbsDimension x="74" y="24" />-->
-							<RelDimension x="0.1" y="0.02" />
+							<AbsDimension x="120" y="24" />
 						</Size>
 						<Anchors>
 							<Anchor point="LEFT" relativeTo="$parentHeaderCharName" relativePoint="RIGHT">
@@ -133,8 +126,7 @@
 					</Button>
 					<Button name="$parentHeaderDiceRoll" inherits="TDB_Header" id="3" text="Dice Roll">
 						<Size>
-							<!--<AbsDimension x="110" y="24" />-->
-							<RelDimension x="0.1" y="0.02" />
+							<AbsDimension x="90" y="24" />
 						</Size>
 						<Anchors>
 							<Anchor point="LEFT" relativeTo="$parentHeaderGuildRank" relativePoint="RIGHT">
@@ -147,8 +139,7 @@
 					</Button>
 					<Button name="$parentHeaderPriorityRoll" inherits="TDB_Header" id="4" text="With Priority">
 						<Size>
-							<!--<AbsDimension x="110" y="24" />-->
-							<RelDimension x="0.1" y="0.02" />
+							<AbsDimension x="90" y="24" />
 						</Size>
 						<Anchors>
 							<Anchor point="LEFT" relativeTo="$parentHeaderDiceRoll" relativePoint="RIGHT">
@@ -163,8 +154,7 @@
 			</Frame>
 			<Button name="AbortButton" inherits="UIPanelButtonTemplate" text="Reset">
 				<Size>
-					<!--<AbsDimension x="172" y="26" />-->
-					<RelDimension x="0.14" y="0.021" />
+					<AbsDimension x="172" y="26" />
 				</Size>
 				<Anchors>
 					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT">
