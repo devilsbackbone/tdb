@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Script file="TDB.lua" />	
+	<Button name="TDB_Header" virtual="true">
+		<Scripts>
+			<OnClick>ColSort_OnClick(self:GetID())</OnClick>
+			<OnEnter>_G[self:GetName().."BG"]:SetVertexColor(1, 1, 1, 1)</OnEnter>
+			<OnLeave>_G[self:GetName().."BG"]:SetVertexColor(0.7, 0.7, 0.7, 0.7)</OnLeave>
+			<OnLoad>self:GetScript("OnLeave")(self)</OnLoad>
+		</Scripts>
+		<NormalTexture name="$parentBG">
+			<Color r="0.4" g="0.4" b="0.04" a="0.4" />
+		</NormalTexture>
+		<ButtonText>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="4" y="0" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont style="GameFontHighlight" />
+		<HighlightFont style="GameFontNormal" />
+	</Button>
+	<Button name="TDB_Entry" virtual="true" hidden="true">
+		<Size>
+			<!--<AbsDimension x="687" y="24" />-->
+			<RelDimension x="0.7" y="0.018" />
+		</Size>
+		<Layers>
+			<Layer>
+				<FontString name="$parentCharName" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<!--<AbsDimension x="69" y="24" />-->
+						<RelDimension x="0.2" y="0.018" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="14" y="-16" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentGuildRank" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<!--<AbsDimension x="74" y="24" />-->
+						<RelDimension x="0.1" y="0.018" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentCharName" relativePoint="RIGHT" />
+					</Anchors>
+				</FontString>
+				<FontString name="$parentDiceRoll" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<!--<AbsDimension x="110" y="24" />-->
+						<RelDimension x="0.1" y="0.018" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentGuildRank" relativePoint="RIGHT" />
+					</Anchors>
+				</FontString>
+				<FontString name="$parentPriorityRoll" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<!--<AbsDimension x="110" y="24" />-->
+						<RelDimension x="0.1" y="0.018" />
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentDiceRoll" relativePoint="RIGHT" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Button>
+	<Frame name="Backbone_Frame" parent="UIParent" toplevel="true" movable="true">
+		<Size>
+			<RelDimension x="0.52" y="0.41" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset x="0" y="0" />
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="CloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="2" y="1"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>CloseButton_OnClick();</OnClick>
+					<OnLoad>self:SetText("close")</OnLoad>
+				</Scripts>
+			</Button>
+			<Frame name="EntryFrame">
+				<Size>
+					<!--<AbsDimension x="800" y="96" />-->
+					<RelDimension x="0.52" y="0.41" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset x="-1" y="-16" />
+					</Anchor>
+				</Anchors>
+				<Frames>
+					<Button name="$parentHeaderCharName" inherits="TDB_Header" id="1" text="Raider">
+						<Size>
+							<!--<AbsDimension x="89" y="24" />-->
+							<RelDimension x="0.2" y="0.02" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset x="14" y="-16" />
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>self:GetScript("OnLeave")(self)</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentHeaderGuildRank" inherits="TDB_Header" id="2" text="Guild Rank">
+						<Size>
+							<!-- <AbsDimension x="74" y="24" />-->
+							<RelDimension x="0.1" y="0.02" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentHeaderCharName" relativePoint="RIGHT">
+								<Offset x="0" y="0" />
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>self:GetScript("OnLeave")(self)</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentHeaderDiceRoll" inherits="TDB_Header" id="3" text="Dice Roll">
+						<Size>
+							<!--<AbsDimension x="110" y="24" />-->
+							<RelDimension x="0.1" y="0.02" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentHeaderGuildRank" relativePoint="RIGHT">
+								<Offset x="0" y="0" />
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>self:GetScript("OnLeave")(self)</OnLoad>
+						</Scripts>
+					</Button>
+					<Button name="$parentHeaderPriorityRoll" inherits="TDB_Header" id="4" text="With Priority">
+						<Size>
+							<!--<AbsDimension x="110" y="24" />-->
+							<RelDimension x="0.1" y="0.02" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentHeaderDiceRoll" relativePoint="RIGHT">
+								<Offset x="0" y="0" />
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>self:GetScript("OnLeave")(self)</OnLoad>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Button name="AbortButton" inherits="UIPanelButtonTemplate" text="Reset">
+				<Size>
+					<!--<AbsDimension x="172" y="26" />-->
+					<RelDimension x="0.14" y="0.021" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT">
+						<Offset x="15" y="43" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>ResetButton_OnClick();</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentTitleBG" file="Interface\PaperDollInfoFrame\UI-GearManager-Title-Background">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="8" y="-7"/>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" x="-8" y="-24"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentDialogBG" file="Interface\PaperDollInfoFrame\UI-Character-CharacterTab-L1">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="8" y="-24"/>
+						<Anchor point="BOTTOMRIGHT" x="-6" y="8"/>
+					</Anchors>
+					<TexCoords left="0.255" right="1" top="0.29" bottom="1"/>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentTopLeft" file="Interface\PaperDollInfoFrame\UI-GearManager-Border">
+					<Size x="64" y="64"/>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0.501953125" right="0.625" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentTopRight" file="Interface\PaperDollInfoFrame\UI-GearManager-Border">
+					<Size x="64" y="64"/>
+					<Anchors>
+						<Anchor point="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.625" right="0.75" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentTop" file="Interface\PaperDollInfoFrame\UI-GearManager-Border">
+					<Size x="0" y="64"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTopLeft" relativePoint="TOPRIGHT"/>
+						<Anchor point="TOPRIGHT" relativeTo="$parentTopRight" relativePoint="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0.25" right="0.369140625" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentBottomLeft" file="Interface\PaperDollInfoFrame\UI-GearManager-Border">
+					<Size x="64" y="64"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0.751953125" right="0.875" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentBottomRight" file="Interface\PaperDollInfoFrame\UI-GearManager-Border">
+					<Size x="64" y="64"/>
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.875" right="1" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentBottom" file="Interface\PaperDollInfoFrame\UI-GearManager-Border">
+					<Size x="0" y="64"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentBottomLeft" relativePoint="BOTTOMRIGHT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottomRight" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0.376953125" right="0.498046875" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentLeft" file="Interface\PaperDollInfoFrame\UI-GearManager-Border">
+					<Size x="64" y="0"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTopLeft" relativePoint="BOTTOMLEFT"/>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentBottomLeft" relativePoint="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0.001953125" right="0.125" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\PaperDollInfoFrame\UI-GearManager-Border">
+					<Size x="64" y="0"/>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parentTopRight" relativePoint="BOTTOMRIGHT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottomRight" relativePoint="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.1171875" right="0.2421875" top="0" bottom="1"/>
+				</Texture>
+				<FontString parentKey="Title" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="12" y="-8"/>
+						<Anchor point="TOPRIGHT" x="-32" y="-8"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>self.TimeSinceLastUpdate = 0;self:RegisterForDrag("LeftButton");TDBMainFrame_OnLoad();</OnLoad>
+			<OnDragStart>self:StartMoving()</OnDragStart>
+			<OnDragStop>self:StopMovingOrSizing()</OnDragStop>
+			<OnUpdate />
+		</Scripts>
+	</Frame>
+	<GameTooltip name="TDB_Scan" inherits="GameTooltipTemplate">
+		<Scripts>
+			<OnLoad>self:SetOwner(WorldFrame, "ANCHOR_NONE");</OnLoad>
+		</Scripts>
+	</GameTooltip>
+</Ui>

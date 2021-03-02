@@ -1,0 +1,9 @@
+## Interface: 90002
+## Title: <|cff00ccffThe Devils Backbone|r> Roll Tracker
+## Notes: A tool for sorting out loot in The Devils Backbone (Team Heroic)
+## Author: Neema
+## DefaultState: enabled
+## Version: 9.02.3
+
+TDB.lua
+TDB.xml
