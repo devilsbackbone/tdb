@@ -6,7 +6,7 @@ local Backbone_Browser = {
 	Entries = {}
 }
 local auctionRunning = false
-local MAX_ENTRIES = 18
+local MAX_ENTRIES = 10
 local MIN_SIZE = 96
 local oldEntry = 0
 
@@ -44,11 +44,11 @@ end
 
 function Backbone_Browser.newEntry(name, note, rank, roll)
 	local additative = 0
-	if rank == "Heroic Bwner" or name == "Neema-Turalyon" or name == "Nerubian-Turalyon" or name == "Qlin-Turalyon" or name == "Decisive-Turalyon" then 
-		additative = 200
-	end
 	if rank == "The Bwnhead" or rank == "Raid Officer" or rank == "Officer" or rank == "Legacy Bwner" or rank == "Mythic Bwner" or rank == "Social Bwner" then 
 		additative = 100
+	end
+	if rank == "Heroic Bwner" or name == "Neema-Turalyon" or name == "Nerubian-Turalyon" or name == "Qlin-Turalyon" or name == "Decisive-Doomhammer" or name == "Maclaïn-Turalyon" then 
+		additative = 200
 	end
 	local fullName = name
 	if rank == "Alt" then
@@ -235,13 +235,13 @@ local function HandleSlashCommands(msg)
 	local cmd, arg = string.split(" ", msg, 2); -- Separates the command from the rest
 	cmd = cmd:lower(); -- Lower case command
 	
-	if cmd == "show" or cmd == "start" then -- try to start a new session
+	if cmd == "show" or cmd == "start" or cmd == "" then -- try to start a new session
 		Backbone_Browser.initiateRoll()
-	elseif cmd == "" then
+	elseif cmd == "help" then
 		print(" ")
 		Backbone_Browser.printd("List of slash commands:")
-		Backbone_Browser.printd("|cff00cc66/tdb show|r - Shows the roll tracker")
-		Backbone_Browser.printd("|cff00cc66/tdb|r - shows this help info")
+		Backbone_Browser.printd("|cff00cc66/tdb|r - Shows the roll tracker")
+		Backbone_Browser.printd("|cff00cc66/tdb help|r - shows this help info")
 		print(" ")
 	end
 end
