@@ -5,7 +5,6 @@ local TDBMainFrame, textArea = nil, nil
 local Backbone_Browser = {
 	Entries = {}
 }
-local auctionRunning = false
 local MAX_ENTRIES = 10
 local MIN_SIZE = 96
 local oldEntry = 0
@@ -37,9 +36,7 @@ function Backbone_Browser.printd(...)
 end
 
 function Backbone_Browser.initiateRoll()
-	if auctionRunning==false then --If we have a consideration running, we can't start a new one
-		Backbone_Frame:Show();
-	end
+	Backbone_Frame:Show();
 end
 
 function Backbone_Browser.newEntry(name, note, rank, roll)
