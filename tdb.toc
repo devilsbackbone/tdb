@@ -5,5 +5,5 @@
 ## DefaultState: enabled
 ## Version: 9.02.4
 
-TDB.lua
-TDB.xml
+tdb.lua
+tdb.xml
