@@ -40,19 +40,28 @@ function Backbone_Browser.initiateRoll()
 end
 
 function Backbone_Browser.newEntry(name, note, rank, roll)
-	local additative = 0
-	if rank == "The Bwnhead" or rank == "Raid Officer" or rank == "Officer" or rank == "Legacy Bwner" or rank == "Mythic Bwner" or rank == "Social Bwner" then 
-		additative = 100
-	end
-	if rank == "Heroic Bwner" or name == "Neema-Turalyon" or name == "Nerubian-Turalyon" or name == "Qlin-Turalyon" or name == "Decisive-Doomhammer" or name == "Maclaïn-Turalyon" then 
-		additative = 200
-	end
+	local additative = Backbone_Browser.getAdditative(name, rank)
 	local fullName = name
 	if rank == "Alt" then
 		fullName = name .. " (".. note .. ")"
 	end
 	table.insert(Backbone_Browser.Entries, {fullName, rank, roll, (roll + additative)})
 	Backbone_Browser.Update()
+end
+
+function Backbone_Browser.getAdditative(name, rank)
+	local additative = 0
+	if TdbPriorityScheme == "Team Heroic" then -- Use static loot priorities
+		if rank == "The Bwnhead" or rank == "Raid Officer" or rank == "Officer" or rank == "Legacy Bwner" or rank == "Mythic Bwner" or rank == "Social Bwner" then 
+			additative = 100
+		end
+		if rank == "Heroic Bwner" or name == "Neema-Turalyon" or name == "Nerubian-Turalyon" or name == "Qlin-Turalyon" or name == "Decisive-Doomhammer" or name == "Maclaïn-Turalyon" then 
+			additative = 200
+		end
+	else -- Check settings 
+		
+	end
+	return additative
 end
 
 function Backbone_Browser.sortTable(id)
@@ -269,8 +278,14 @@ BackboneEvents:SetScript("OnEvent", function(self, event, msg)
 		SLASH_Backbone1 = "/tdb"
 		SlashCmdList.Backbone = HandleSlashCommands
 
-		if TdbOverrides == nil then
-			TdbOverrides = ""
+		if TdbPriorityRanks == nil then
+			TdbPriorityRanks = []
+		end
+		if TdbPriorityNames == nil then
+			TdbPriorityNames = []
+		end
+		if TdbPriorityScheme == nil then
+			TdbPriorityScheme = "Team Heroic"
 		end
 	end
 
