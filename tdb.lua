@@ -212,6 +212,9 @@ end
 
 function CloseButton_OnClick()
 	Backbone_Frame:Hide()
+	Backbone_Frame:ClearAllPoints()
+	Backbone_Browser.Entries = {}
+	Backbone_Browser.Update()
 end
 
 function ResetButton_OnClick()
