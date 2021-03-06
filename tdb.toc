@@ -3,7 +3,8 @@
 ## Notes: A tool for sorting out loot in The Devils Backbone (Team Heroic)
 ## Author: Neema
 ## DefaultState: enabled
-## Version: 9.02.6
+## SavedVariables: TdbPriorityScheme, TdbPriorityRanks, TdbPriorityNames
+## Version: 9.02.7
 
 tdb.lua
 tdb.xml
