@@ -1,4 +1,4 @@
-## Interface: 90002
+## Interface: 90005
 ## Title: <|cff00ccffThe Devils Backbone|r> Roll Tracker
 ## Notes: A tool for sorting out loot in The Devils Backbone (Team Heroic)
 ## Author: Neema
