@@ -55,7 +55,7 @@ function Backbone_Browser.getAdditative(name, rank)
 		if rank == "The Bwnhead" or rank == "Raid Officer" or rank == "Officer" or rank == "Legacy Bwner" or rank == "Mythic Bwner" or rank == "Social Bwner" then 
 			additative = 100
 		end
-		if rank == "Heroic Bwner" or name == "Neema-Turalyon" or name == "Nerubian-Turalyon" or name == "Qlin-Turalyon" or name == "Decisive-Doomhammer" or name == "Maclaïn-Turalyon" then 
+		if rank == "Heroic Bwner" or name == "Neema-Turalyon" or name == "Swytchblade-Turalyon" or name == "Messremmb-Turalyon" or name == "Qlin-Turalyon" or name == "Decisive-Doomhammer" or name == "Maclaïn-Turalyon" then 
 			additative = 200
 		end
 	else -- Check settings 
